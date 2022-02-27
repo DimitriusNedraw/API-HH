@@ -1,5 +1,6 @@
 import requests
-from .methods import context, vacancy
+from .methods.vacancy import VacancyRequester
+from .methods.context import ContextRequester
 
 
 
@@ -16,14 +17,14 @@ class APIHH:
     @property
     def context(self):
         if self.__context is None:
-            self.__context = context.Context(self.__BASE_URL, self.__session)
+            self.__context = ContextRequester(self.__BASE_URL, self.__session)
         return self.__context
 
     
     @property
     def vacancy(self):
         if self.__vacancy is None:
-            self.__vacancy = vacancy.Vacancy(self.__BASE_URL, self.__session)
+            self.__vacancy = VacancyRequester(self.__BASE_URL, self.__session)
         return self.__vacancy
 
 
