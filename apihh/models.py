@@ -31,6 +31,34 @@ Area.update_forward_refs()
 class Country(AreaBase):
     url: str
 
+class Cluster(BaseModel):
+    class Item(BaseModel):
+        name: str
+        url: str
+        count: int
+        type: str | None
+    id: str
+    name: str
+    items: List[Item]
+
+class ClusterTypeMetroLine(Cluster):
+    class MetroLine(BaseModel):
+        id: str
+        hex_color: str
+        area: Area
+    metro_line: MetroLine
+
+class ClusterTypeMetroStation(Cluster):
+    class MetroStation(BaseModel):
+        id: str
+        hex_color: str
+        lat: float
+        lng: float
+        order: int
+        area: Area
+    metro_station: MetroStation
+
+
 
 
 
