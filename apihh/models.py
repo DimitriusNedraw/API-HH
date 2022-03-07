@@ -19,14 +19,18 @@ class Address(BaseModel):
     lng: float | None
     metro_stations: List[MetroStation]
 
-
-
-class Area(BaseModel):
-    name: str
+class AreaBase(BaseModel):
     id: str
+    name: str
+
+class Area(AreaBase):
     parent_id: str | None
     areas: List['Area']
 Area.update_forward_refs()
+
+class Country(AreaBase):
+    url: str
+
 
 
 
