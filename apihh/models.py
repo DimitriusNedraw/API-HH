@@ -21,6 +21,16 @@ class Address(BaseModel):
 
 
 
+class Area(BaseModel):
+    name: str
+    id: str
+    parent_id: str | None
+    areas: List['Area']
+Area.update_forward_refs()
+
+
+
+
 
 
 
